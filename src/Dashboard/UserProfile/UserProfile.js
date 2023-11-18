@@ -19,7 +19,7 @@ const UserProfile = () => {
   }, [user?.email]);
   const userInfo = userRole[0];
   if (user.emailVerified === true) {
-    fetch(`http://localhost:5000/users/varify?email=${user.email}`, {
+    fetch(`http://localhost:5000/users/verify?email=${user.email}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
