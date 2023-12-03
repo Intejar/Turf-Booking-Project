@@ -133,17 +133,21 @@ const BookingHistory = () => {
                   </td>
                   <td className="text-center">
                     {" "}
-                    <button
-                      onClick={() =>
-                        bookingDelete(
-                          booking?._id,
-                          booking?.turfName,
-                          booking?.slot
-                        )
-                      }
-                    >
-                      <FaTrashAlt className="text-red-800 hover:text-xl"></FaTrashAlt>
-                    </button>
+                    {booking?.gameStatus === "over" ? (
+                      <button
+                        onClick={() =>
+                          bookingDelete(
+                            booking?._id,
+                            booking?.turfName,
+                            booking?.slot
+                          )
+                        }
+                      >
+                        <FaTrashAlt className="text-red-800 hover:text-xl"></FaTrashAlt>
+                      </button>
+                    ) : (
+                      <div></div>
+                    )}
                   </td>
                 </tr>
               ))}
