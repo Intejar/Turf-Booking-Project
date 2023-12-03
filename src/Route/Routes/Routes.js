@@ -42,22 +42,22 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: <UserProfile></UserProfile>,
       },
-      // {
-      //   path: "/dashboard/bookingHistory",
-      //   element: <BookingHistory></BookingHistory>,
-      // },
-      // {
-      //   path: "/dashboard/holdSlot",
-      //   element: <HoldSlot></HoldSlot>,
-      // },
-      // {
-      //   path: "/dashboard/bookedData",
-      //   element: <TurfOwnerBooking></TurfOwnerBooking>,
-      // },
-      // {
-      //   path: "/dashboard/manualBooking",
-      //   element: <ManualBooking></ManualBooking>,
-      // },
+      {
+        path: "/dashboard/bookingHistory",
+        element: <BookingHistory></BookingHistory>,
+      },
+      {
+        path: "/dashboard/holdSlot",
+        element: <HoldSlot></HoldSlot>,
+      },
+      {
+        path: "/dashboard/bookedData",
+        element: <TurfOwnerBooking></TurfOwnerBooking>,
+      },
+      {
+        path: "/dashboard/manualBooking",
+        element: <ManualBooking></ManualBooking>,
+      },
     ],
   },
   // {
