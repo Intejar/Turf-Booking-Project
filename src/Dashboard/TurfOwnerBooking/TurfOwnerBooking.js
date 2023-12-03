@@ -61,7 +61,29 @@ const TurfOwnerBooking = () => {
         .then((data) => {
           console.log(data);
           if (data.deletedCount > 0) {
-            toast.success(`product ${name} booking has successfully deleted`);
+            toast.success(
+              ` ${name} booking in ${slot} has successfully deleted`
+            );
+            refetch();
+          }
+        });
+    }
+  };
+  const bookingFinish = (id, name, slot) => {
+    const proceed = window.confirm(
+      `Are you sure game ${name}, slot: ${slot} is finished?`
+    );
+    if (proceed) {
+      fetch(`http://localhost:5000/booking/${id}`, {
+        method: "PATCH",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.modifiedCount > 0) {
+            toast.success(
+              `${name} booking in ${slot} has successfully finished`
+            );
             refetch();
           }
         });
@@ -122,7 +144,17 @@ const TurfOwnerBooking = () => {
                     <span className="text-xl">৳</span> {booking?.turfPrice}
                   </td>
                   <td className="text-center">
-                    <button className="btn btn-xs bg-green-800 text-white">
+                    <button
+                      onClick={() =>
+                        bookingFinish(
+                          booking?._id,
+                          booking?.turfName,
+                          booking?.slot
+                        )
+                      }
+                      className="btn btn-xs bg-green-800 text-white"
+                      disabled={booking?.gameStatus === "over" ? true : false}
+                    >
                       Finished
                     </button>
                   </td>
