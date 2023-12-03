@@ -6,6 +6,10 @@ import Register from "../../Pages/Register/Register";
 import DashboardLayout from "../../Layout/Dashboard";
 import UserProfile from "../../Dashboard/UserProfile/UserProfile";
 import SlotBooking from "../../Pages/SlotBooking/SlotBooking";
+import BookingHistory from "../../Dashboard/BookingHistory/BookingHistory";
+import HoldSlot from "../../Dashboard/HoldSlot/HoldSlot";
+import TurfOwnerBooking from "../../Dashboard/TurfOwnerBooking/TurfOwnerBooking";
+import ManualBooking from "../../Dashboard/ManualBooking/ManualBooking";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +42,22 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: <UserProfile></UserProfile>,
       },
+      // {
+      //   path: "/dashboard/bookingHistory",
+      //   element: <BookingHistory></BookingHistory>,
+      // },
+      // {
+      //   path: "/dashboard/holdSlot",
+      //   element: <HoldSlot></HoldSlot>,
+      // },
+      // {
+      //   path: "/dashboard/bookedData",
+      //   element: <TurfOwnerBooking></TurfOwnerBooking>,
+      // },
+      // {
+      //   path: "/dashboard/manualBooking",
+      //   element: <ManualBooking></ManualBooking>,
+      // },
     ],
   },
   // {

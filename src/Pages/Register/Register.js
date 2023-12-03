@@ -250,7 +250,7 @@ const Register = () => {
               </label>
               <select
                 {...register("location")}
-                className="select select-ghost w-full bg-white select-bordered"
+                className="select select-ghost w-full bg-white select-bordered border-accent"
               >
                 <option value="Panchlaish">Panchlaish</option>
                 <option value="Oxygen" selected>

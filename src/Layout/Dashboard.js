@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider/AuthProvider";
 import Navbar from "../Shared/Navbar/Navbar";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
   const [userRole, setUserRole] = useState([]);
+  const location = useLocation();
   useEffect(() => {
     fetch(`http://localhost:5000/users?email=${user?.email}`)
       .then((res) => res.json())
@@ -16,6 +17,9 @@ const DashboardLayout = () => {
   }, [user?.email]);
   const userInfo = userRole[0];
   console.log("d", userInfo);
+  const isButtonActive = (path) => {
+    return location.pathname === path;
+  };
   return (
     <div className="">
       <Navbar></Navbar>
@@ -36,37 +40,81 @@ const DashboardLayout = () => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <ul className="menu p-4 w-80 bg-teal-100 dark:bg-slate-700 text-base-content rounded-lg">
+          <ul className="menu p-4 w-80 bg-teal-100 dark:bg-slate-700 text-base-content rounded-lg ">
             {userInfo?.role === "Player" && (
               <>
-                <hr></hr>
-                <li>
+                <li className="mb-2">
                   {" "}
-                  <Link className="font-bold dark:text-white">Booked Turf</Link>
+                  <Link
+                    className={` dark:text-white ${
+                      isButtonActive("/dashboard")
+                        ? "bg-green-800 text-white font-bold "
+                        : "bg-white text-green-800 font-bold"
+                    }`}
+                  >
+                    User Profile
+                  </Link>
                 </li>
-                <hr></hr>
-                <li>
-                  <Link className="font-bold dark:text-white">
+                <li className="mb-2">
+                  <Link
+                    className={`font-bold  dark:text-white ${
+                      isButtonActive("/dashboard/bookingHistory")
+                        ? "bg-green-800 text-white font-bold "
+                        : "bg-white text-green-800 font-bold"
+                    }`}
+                    to="/dashboard/bookingHistory"
+                  >
                     Booking History
                   </Link>
                 </li>
-                <hr></hr>
+                <li>
+                  <Link
+                    className={` dark:text-white ${
+                      isButtonActive("/dashboard/holdSlot")
+                        ? "bg-green-800 text-white font-bold "
+                        : "bg-white text-green-800 font-bold"
+                    }`}
+                    to="/dashboard/holdSlot"
+                  >
+                    Hold Slot
+                  </Link>
+                </li>
               </>
             )}
             {userInfo?.role === "Turf Owner" && (
               <>
-                <li>
+                <li className="mb-2">
+                  {" "}
                   <Link
-                    className="font-bold dark:text-white"
-                    to="/dashboard/MyOrders"
+                    className={` dark:text-white ${
+                      isButtonActive("/dashboard")
+                        ? "bg-green-800 text-white font-bold "
+                        : "bg-white text-green-800 font-bold"
+                    }`}
                   >
-                    Booking Information
+                    User Profile
                   </Link>
                 </li>
-                <li>
+                <li className="mb-2">
                   <Link
-                    className="font-bold dark:text-white"
-                    to="/dashboard/MyWishList"
+                    className={`font-bold  dark:text-white ${
+                      isButtonActive("/dashboard/bookedData")
+                        ? "bg-green-800 text-white font-bold "
+                        : "bg-white text-green-800 font-bold"
+                    }`}
+                    to="/dashboard/bookedData"
+                  >
+                    Booked Slots
+                  </Link>
+                </li>
+                <li className="mb-2">
+                  <Link
+                    className={`font-bold  dark:text-white ${
+                      isButtonActive("/dashboard/manualBooking")
+                        ? "bg-green-800 text-white font-bold "
+                        : "bg-white text-green-800 font-bold"
+                    }`}
+                    to="/dashboard/manualBooking"
                   >
                     Manual Booking
                   </Link>
@@ -77,27 +125,18 @@ const DashboardLayout = () => {
               <>
                 <li>
                   {" "}
-                  <Link
-                    className="font-bold dark:text-white"
-                    to="/dashboard/MyProduct"
-                  >
+                  <Link className="" to="/dashboard/MyProduct">
                     My Products
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    className="font-bold dark:text-white"
-                    to="/dashboard/AddProduct"
-                  >
+                  <Link className="" to="/dashboard/AddProduct">
                     Add Product
                   </Link>
                 </li>
 
                 <li>
-                  <Link
-                    className="font-bold dark:text-white"
-                    to="/dashboard/AllUsers"
-                  >
+                  <Link className="" to="/dashboard/AllUsers">
                     All Turf Owner
                   </Link>
                 </li>

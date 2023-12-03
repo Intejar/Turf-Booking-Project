@@ -4,10 +4,16 @@ import { DayPicker } from "react-day-picker";
 import { AuthContext } from "../../Context/AuthProvider/AuthProvider";
 import { sl } from "date-fns/locale";
 import toast from "react-hot-toast";
+import { useForm } from "react-hook-form";
 
 const BookingModal = ({ data, date, setTurfData, refetch }) => {
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
   const { user } = useContext(AuthContext);
-  const { name, slots } = data;
+  const { name, slots, img, location, price } = data;
   const [userRole, setUserRole] = useState([]);
   const formatedDate = format(date, "PP");
   useEffect(() => {
@@ -22,6 +28,7 @@ const BookingModal = ({ data, date, setTurfData, refetch }) => {
 
   const handleBook = (event) => {
     event.preventDefault();
+    const clickedButton = event.nativeEvent.submitter;
     const form = event.target;
     const slot = form.slot.value;
     const button = form.book.value;
@@ -30,30 +37,19 @@ const BookingModal = ({ data, date, setTurfData, refetch }) => {
     const bookingData = {
       name: userInfo.name,
       email: userInfo.email,
-      phone: userInfo.name,
+      phone: userInfo.phone,
       alternativePhone: alternativePhone,
       bookingDate: formatedDate,
       turfName: name,
       slot: slot,
+      turfImg: img,
+      turfLocation: location,
+      turfPrice: price,
     };
-
-    if (button === "Book Slot") {
-      fetch(`http://localhost:5000/booking`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(bookingData),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.acknowledged) {
-            toast.success("Your Booking is confirmed");
-            refetch();
-          }
-        });
-    } else {
-      console.log("implement hold");
+    // Check the name attribute of the clicked button
+    if (clickedButton.name === "hold") {
+      // Handle Hold Slot button click
+      console.log("Hold Slot button clicked");
       fetch(`http://localhost:5000/hold`, {
         method: "POST",
         headers: {
@@ -68,9 +64,26 @@ const BookingModal = ({ data, date, setTurfData, refetch }) => {
             refetch();
           }
         });
+      // Perform the necessary actions for Hold Slot
+    } else if (clickedButton.name === "book") {
+      // Handle Book Slot button click
+      console.log("Book Slot button clicked");
+      fetch(`http://localhost:5000/booking`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(bookingData),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged) {
+            toast.success("Your Booking is confirmed");
+            refetch();
+          }
+        });
+      // Perform the necessary actions for Book Slot
     }
-
-    console.log(bookingData);
     setTurfData(null);
   };
 
@@ -132,7 +145,7 @@ const BookingModal = ({ data, date, setTurfData, refetch }) => {
               className="input input-bordered w-full input-accent"
             />
             <input
-              name="book"
+              name="hold"
               type="submit"
               value="Hold Slot"
               className="cursor-pointer mt-2 input input-border input-accent bg-red-700 hover:bg-red-500 text-white w-full "
