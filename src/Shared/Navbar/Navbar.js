@@ -111,6 +111,11 @@ const Navbar = () => {
               Slot Book
             </Link>
           </li>
+          <li>
+            <Link to="/shop" className="font-bold dark:text-white">
+              Shop
+            </Link>
+          </li>
         </>
       ) : (
         <li>

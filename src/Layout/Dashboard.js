@@ -49,7 +49,7 @@ const DashboardLayout = () => {
                     className={` dark:text-white ${
                       isButtonActive("/dashboard")
                         ? "bg-green-800 text-white font-bold "
-                        : "bg-white text-green-800 font-bold"
+                        : "bg-white text-green-800  font-bold hover:bg-green-600"
                     }`}
                   >
                     User Profile
@@ -60,23 +60,47 @@ const DashboardLayout = () => {
                     className={`font-bold  dark:text-white ${
                       isButtonActive("/dashboard/bookingHistory")
                         ? "bg-green-800 text-white font-bold "
-                        : "bg-white text-green-800 font-bold"
+                        : "bg-white text-green-800  font-bold hover:bg-green-600"
                     }`}
                     to="/dashboard/bookingHistory"
                   >
                     Booking History
                   </Link>
                 </li>
-                <li>
+                <li className="mb-2">
                   <Link
                     className={` dark:text-white ${
                       isButtonActive("/dashboard/holdSlot")
                         ? "bg-green-800 text-white font-bold "
-                        : "bg-white text-green-800 font-bold"
+                        : "bg-white text-green-800  font-bold hover:bg-green-600"
                     }`}
                     to="/dashboard/holdSlot"
                   >
                     Hold Slot
+                  </Link>
+                </li>
+                <li className="mb-2">
+                  <Link
+                    className={` dark:text-white ${
+                      isButtonActive("/dashboard/myOrder")
+                        ? "bg-green-800 text-white font-bold "
+                        : "bg-white text-green-800  font-bold hover:bg-green-600"
+                    }`}
+                    to="/dashboard/myOrder"
+                  >
+                    My Order
+                  </Link>
+                </li>
+                <li className="mb-2">
+                  <Link
+                    className={`font-bold  dark:text-white ${
+                      isButtonActive("/dashboard/customOrder")
+                        ? "bg-green-800 text-white font-bold"
+                        : "bg-white text-green-800  font-bold hover:bg-green-600"
+                    }`}
+                    to="/dashboard/customOrder"
+                  >
+                    Custom Orders
                   </Link>
                 </li>
               </>
@@ -89,7 +113,7 @@ const DashboardLayout = () => {
                     className={` dark:text-white ${
                       isButtonActive("/dashboard")
                         ? "bg-green-800 text-white font-bold "
-                        : "bg-white text-green-800 font-bold"
+                        : "bg-white text-green-800  font-bold hover:bg-green-600"
                     }`}
                   >
                     User Profile
@@ -100,7 +124,7 @@ const DashboardLayout = () => {
                     className={`font-bold  dark:text-white ${
                       isButtonActive("/dashboard/bookedData")
                         ? "bg-green-800 text-white font-bold "
-                        : "bg-white text-green-800 font-bold"
+                        : "bg-white text-green-800  font-bold hover:bg-green-600"
                     }`}
                     to="/dashboard/bookedData"
                   >
@@ -112,32 +136,88 @@ const DashboardLayout = () => {
                     className={`font-bold  dark:text-white ${
                       isButtonActive("/dashboard/manualBooking")
                         ? "bg-green-800 text-white font-bold "
-                        : "bg-white text-green-800 font-bold"
+                        : "bg-white text-green-800  font-bold hover:bg-green-600"
                     }`}
                     to="/dashboard/manualBooking"
                   >
                     Manual Booking
                   </Link>
                 </li>
+                <li className="mb-2">
+                  <Link
+                    className={`font-bold  dark:text-white ${
+                      isButtonActive("/dashboard/customOrder")
+                        ? "bg-green-800 text-white font-bold"
+                        : "bg-white text-green-800  font-bold hover:bg-green-600"
+                    }`}
+                    to="/dashboard/customOrder"
+                  >
+                    Custom Orders
+                  </Link>
+                </li>
               </>
             )}
             {userInfo?.role === "Admin" && (
               <>
-                <li>
+                <li className="mb-2">
                   {" "}
-                  <Link className="" to="/dashboard/MyProduct">
-                    My Products
+                  <Link
+                    className={` dark:text-white ${
+                      isButtonActive("/dashboard")
+                        ? "bg-green-800 text-white font-bold "
+                        : "bg-white text-green-800  font-bold hover:bg-green-600"
+                    }`}
+                  >
+                    User Profile
                   </Link>
                 </li>
-                <li>
-                  <Link className="" to="/dashboard/AddProduct">
-                    Add Product
+                <li className="mb-2">
+                  {" "}
+                  <Link
+                    className={`font-bold  dark:text-white ${
+                      isButtonActive("/dashboard/addProduct")
+                        ? "bg-green-800 text-white font-bold "
+                        : "bg-white text-green-800  font-bold hover:bg-green-600"
+                    }`}
+                    to="/dashboard/addProduct"
+                  >
+                    Add Products
                   </Link>
                 </li>
-
-                <li>
-                  <Link className="" to="/dashboard/AllUsers">
-                    All Turf Owner
+                <li className="mb-2">
+                  <Link
+                    className={`font-bold  dark:text-white ${
+                      isButtonActive("/dashboard/allProduct")
+                        ? "bg-green-800 text-white font-bold "
+                        : "bg-white text-green-800  font-bold hover:bg-green-600"
+                    }`}
+                    to="/dashboard/allProduct"
+                  >
+                    All Products
+                  </Link>
+                </li>
+                <li className="mb-2">
+                  <Link
+                    className={`font-bold  dark:text-white ${
+                      isButtonActive("/dashboard/allTurf")
+                        ? "bg-green-800 text-white font-bold"
+                        : "bg-white text-green-800  font-bold hover:bg-green-600"
+                    }`}
+                    to="/dashboard/allTurf"
+                  >
+                    All Turfs
+                  </Link>
+                </li>
+                <li className="mb-2">
+                  <Link
+                    className={`font-bold  dark:text-white ${
+                      isButtonActive("/dashboard/admin/customOrder")
+                        ? "bg-green-800 text-white font-bold"
+                        : "bg-white text-green-800  font-bold hover:bg-green-600"
+                    }`}
+                    to="/dashboard/admin/customOrder"
+                  >
+                    Approve Custom Orders
                   </Link>
                 </li>
               </>

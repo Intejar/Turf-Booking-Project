@@ -2,7 +2,7 @@ import React from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 const SlotBookingCard = ({ turfInfo, setTurfData }) => {
-  const { name, slots, img, location, price } = turfInfo;
+  const { name, slots, img, location, price, promo, discount } = turfInfo;
   console.log(img);
   return (
     <div className="card w-96 h-4/5 bg-gray-200 shadow-lg">
@@ -10,7 +10,20 @@ const SlotBookingCard = ({ turfInfo, setTurfData }) => {
         <img src={img} alt="Turf Photo " className="w-full" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title text-green-800 font-bold">{name}</h2>
+        <div className="flex justify-between">
+          <h2 className="card-title text-green-800 font-bold">{name}</h2>
+          {discount ? (
+            <div
+              className="flex gap-1 items-center tooltip"
+              data-tip={`Get ${discount}% off`}
+            >
+              <h1 className="text-orange-500 text-md font-bold">promo:</h1>
+              <div className="badge bg-red-500 text-white">{promo}</div>
+            </div>
+          ) : (
+            <></>
+          )}
+        </div>
         <div className="flex items-center justify-around">
           <div className="flex items-center gap-1">
             <h1 className="text-2xl text-red-700 font-extrabold">৳</h1>

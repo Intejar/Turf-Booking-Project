@@ -10,6 +10,13 @@ import BookingHistory from "../../Dashboard/BookingHistory/BookingHistory";
 import HoldSlot from "../../Dashboard/HoldSlot/HoldSlot";
 import TurfOwnerBooking from "../../Dashboard/TurfOwnerBooking/TurfOwnerBooking";
 import ManualBooking from "../../Dashboard/ManualBooking/ManualBooking";
+import AddProduct from "../../Pages/Admin/AddProduct/AddProduct";
+import AllProduct from "../../Pages/Admin/AllProduct/AllProduct";
+import AllTurf from "../../Pages/Admin/AllTurf/AllTurf";
+import Shop from "../../Pages/Shop/Shop";
+import CustomOrder from "../../Pages/Shop/CustomOrder/CustomOrder";
+import CustomAdminOrder from "../../Pages/Shop/CustomOrder/CustomAdminOrder";
+import MyOrder from "../../Dashboard/MyOrder/MyOrder";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/slotBook",
         element: <SlotBooking></SlotBooking>,
+      },
+      {
+        path: "/shop",
+        element: <Shop></Shop>,
       },
     ],
   },
@@ -57,6 +68,30 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/manualBooking",
         element: <ManualBooking></ManualBooking>,
+      },
+      {
+        path: "/dashboard/addProduct",
+        element: <AddProduct></AddProduct>,
+      },
+      {
+        path: "/dashboard/allProduct",
+        element: <AllProduct></AllProduct>,
+      },
+      {
+        path: "/dashboard/allTurf",
+        element: <AllTurf></AllTurf>,
+      },
+      {
+        path: "/dashboard/customOrder",
+        element: <CustomOrder></CustomOrder>,
+      },
+      {
+        path: "/dashboard/admin/customOrder",
+        element: <CustomAdminOrder></CustomAdminOrder>,
+      },
+      {
+        path: "/dashboard/myOrder",
+        element: <MyOrder></MyOrder>,
       },
     ],
   },
