@@ -17,6 +17,8 @@ import Shop from "../../Pages/Shop/Shop";
 import CustomOrder from "../../Pages/Shop/CustomOrder/CustomOrder";
 import CustomAdminOrder from "../../Pages/Shop/CustomOrder/CustomAdminOrder";
 import MyOrder from "../../Dashboard/MyOrder/MyOrder";
+import MonthlyCalculation from "../../Pages/TurfOwner/MonthlyCalc/MonthlyCalculation";
+import TurfOwnerDiscount from "../../Pages/TurfOwner/DiscountSet/DiscountSet";
 
 const router = createBrowserRouter([
   {
@@ -92,6 +94,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/myOrder",
         element: <MyOrder></MyOrder>,
+      },
+      {
+        path: "/dashboard/monthlyCalc",
+        element: <MonthlyCalculation></MonthlyCalculation>,
+      },
+      {
+        path: "/dashboard/discountSet",
+        element: <TurfOwnerDiscount></TurfOwnerDiscount>,
       },
     ],
   },
