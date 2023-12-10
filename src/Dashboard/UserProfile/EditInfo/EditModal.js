@@ -37,7 +37,20 @@ const EditModal = ({ edit }) => {
           <h3 className="text-lg font-bold  text-green-700">
             Edit Your Information
           </h3>
-          {/* <form onSubmit={handleEdit} className="text-center">
+          <form onSubmit={handleEdit} className="text-center">
+            <div className="indicator mx-auto">
+              <div {...getRootProps({ className: "dropzone" })}>
+                <span className="mb-3 mr-3 cursor-pointer py-3 text-lg font-bold indicator-item indicator-start sm:indicator-middle md:indicator-bottom lg:indicator-center xl:indicator-end badge bg-green-800 text-white">
+                  +
+                </span>
+              </div>
+
+              <div className="avatar">
+                <div className="w-28 rounded-full">
+                  <img src={edit.img} />
+                </div>
+              </div>
+            </div>
             <label className="label">
               <span className="label-text">Product Name</span>
             </label>
@@ -74,7 +87,7 @@ const EditModal = ({ edit }) => {
               value="save changes"
               className="my-1 input input-border input-accent bg-accent text-white w-full "
             />
-          </form> */}
+          </form>
           {/* <form onSubmit={handleSubmit(handleEdit)} className="card-body"> */}
           {/* <div className="indicator mx-auto">
               <div {...getRootProps({ className: "dropzone" })}>

@@ -18,6 +18,10 @@ const UserProfile = () => {
       });
   }, [user?.email]);
   const userInfo = userRole[0];
+  // console.log(userInfo);
+  // const name = userInfo.name;
+  // const userName = name.toUpperCase();
+
   if (user.emailVerified === true) {
     fetch(`http://localhost:5000/users/verify?email=${user.email}`, {
       method: "PATCH",
@@ -26,6 +30,15 @@ const UserProfile = () => {
       .then((data) => {});
   }
   console.log(userInfo);
+
+  // if (userInfo.role === "Turf Owner") {
+  //   fetch(`http://localhost:5000/turfCollection?name=${userName}`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setEditData(data);
+  //     });
+  // }
   return (
     <div className="min-h-screen bg-teal-100 dark:bg-slate-700 w-4/5 m-5 rounded-lg p-5 ">
       <div>

@@ -155,6 +155,30 @@ const DashboardLayout = () => {
                     Custom Orders
                   </Link>
                 </li>
+                <li className="mb-2">
+                  <Link
+                    className={`font-bold  dark:text-white ${
+                      isButtonActive("/dashboard/discountSet")
+                        ? "bg-green-800 text-white font-bold"
+                        : "bg-white text-green-800  font-bold hover:bg-green-600"
+                    }`}
+                    to="/dashboard/discountSet"
+                  >
+                    Turf Discount
+                  </Link>
+                </li>
+                <li className="mb-2">
+                  <Link
+                    className={`font-bold  dark:text-white ${
+                      isButtonActive("/dashboard/monthlyCalc")
+                        ? "bg-green-800 text-white font-bold"
+                        : "bg-white text-green-800  font-bold hover:bg-green-600"
+                    }`}
+                    to="/dashboard/monthlyCalc"
+                  >
+                    Monthly Calculation
+                  </Link>
+                </li>
               </>
             )}
             {userInfo?.role === "Admin" && (

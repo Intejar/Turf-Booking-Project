@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { FaShoppingBag } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
+import { AuthContext } from "../../../Context/AuthProvider/AuthProvider";
 
 const ProductCard = ({ productInfo, setproductData }) => {
+  const { user } = useContext(AuthContext);
   const {
     productImg,
     productName,
@@ -12,6 +16,7 @@ const ProductCard = ({ productInfo, setproductData }) => {
     promo,
     discount,
   } = productInfo;
+
   return (
     <div className="card card-compact w-96 bg-base-100 h-3/4 shadow-xl">
       <figure>
@@ -37,14 +42,6 @@ const ProductCard = ({ productInfo, setproductData }) => {
               {productPrice}
             </h1>
           </div>
-          {discount ? (
-            <div className="flex gap-1">
-              <h1 className="text-orange-500 text-md font-bold">promo:</h1>
-              <div className="badge bg-red-500 text-white">{promo}</div>
-            </div>
-          ) : (
-            <></>
-          )}
         </div>
         <p>{description}</p>
         <div className="card-actions justify-end">
