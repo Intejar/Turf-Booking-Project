@@ -24,7 +24,7 @@ const CustomModal = ({ data, setproductData, refetch }) => {
   } = data;
   const [userRole, setUserRole] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/users?email=${user?.email}`)
+    fetch(`https://turf-server-seven.vercel.app/users?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -50,7 +50,7 @@ const CustomModal = ({ data, setproductData, refetch }) => {
       productImg: productImg,
     };
 
-    fetch(`http://localhost:5000/customOrder`, {
+    fetch(`https://turf-server-seven.vercel.app/customOrder`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

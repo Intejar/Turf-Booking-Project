@@ -18,7 +18,7 @@ const BookingHistory = () => {
     queryKey: ["bookings"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/booking?customerEmail=${crntUserMail}`
+        `https://turf-server-seven.vercel.app/booking?customerEmail=${crntUserMail}`
       );
       const data = await res.json();
       return data;
@@ -54,7 +54,7 @@ const BookingHistory = () => {
     );
     if (proceed) {
       console.log("dltId", id);
-      fetch(`http://localhost:5000/booking/${id}`, {
+      fetch(`https://turf-server-seven.vercel.app/booking/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

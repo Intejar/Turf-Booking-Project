@@ -24,7 +24,7 @@ const TurfOwnerDiscount = () => {
     queryKey: ["user", userName],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/turfCollection?name=${userName}`
+        `https://turf-server-seven.vercel.app/turfCollection?name=${userName}`
       );
       const data = await res.json();
       console.log("discount", data);

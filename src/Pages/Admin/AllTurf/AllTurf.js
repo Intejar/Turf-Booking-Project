@@ -21,7 +21,9 @@ const AllTurf = () => {
   } = useQuery({
     queryKey: ["user", crntUserMail],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/turfCollection`);
+      const res = await fetch(
+        `https://turf-server-seven.vercel.app/turfCollection`
+      );
       const data = await res.json();
       return data;
     },
@@ -37,7 +39,7 @@ const AllTurf = () => {
   const handleDelete = (id, name) => {
     const proceed = window.confirm(`Are you sure you want to delete ${name}?`);
     if (proceed) {
-      fetch(`http://localhost:5000/shop/${id}`, {
+      fetch(`https://turf-server-seven.vercel.app/shop/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -58,7 +60,7 @@ const AllTurf = () => {
     productPrice,
     productLocation
   ) => {
-    fetch(`http://localhost:5000/advertise?productId=${id}`)
+    fetch(`https://turf-server-seven.vercel.app/advertise?productId=${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.length) {
@@ -71,7 +73,7 @@ const AllTurf = () => {
             productPrice: productPrice,
             productLocation: productLocation,
           };
-          fetch("http://localhost:5000/advertise", {
+          fetch("https://turf-server-seven.vercel.app/advertise", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -81,13 +83,16 @@ const AllTurf = () => {
             .then((res) => res.json())
             .then((data) => {
               console.log(data);
-              fetch(`http://localhost:5000/turfCollection/${id}`, {
-                method: "PATCH",
-                headers: {
-                  "content-type": "application/json",
-                },
-                body: JSON.stringify({ advertise: "True" }),
-              })
+              fetch(
+                `https://turf-server-seven.vercel.app/turfCollection/${id}`,
+                {
+                  method: "PATCH",
+                  headers: {
+                    "content-type": "application/json",
+                  },
+                  body: JSON.stringify({ advertise: "True" }),
+                }
+              )
                 .then((res) => res.json())
                 .then((data) => {
                   console.log(data);
@@ -109,14 +114,14 @@ const AllTurf = () => {
       `Are you sure you want to remove ${productName} from Advertise section?`
     );
     if (proceed) {
-      fetch(`http://localhost:5000/advertise/${id}`, {
+      fetch(`https://turf-server-seven.vercel.app/advertise/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
           if (data.deletedCount > 0) {
-            fetch(`http://localhost:5000/turfCollection/${id}`, {
+            fetch(`https://turf-server-seven.vercel.app/turfCollection/${id}`, {
               method: "PATCH",
               headers: {
                 "content-type": "application/json",

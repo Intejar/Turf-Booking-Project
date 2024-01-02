@@ -7,7 +7,7 @@ const Home = () => {
   const [topSell, setTopSell] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/turfCollection`)
+    fetch(`https://turf-server-seven.vercel.app/turfCollection`)
       .then((res) => res.json())
       .then((data) => {
         console.log("top", data);
@@ -15,7 +15,7 @@ const Home = () => {
       });
   }, []);
   useEffect(() => {
-    fetch(`http://localhost:5000/shop`)
+    fetch(`https://turf-server-seven.vercel.app/shop`)
       .then((res) => res.json())
       .then((data) => {
         console.log("top", data);

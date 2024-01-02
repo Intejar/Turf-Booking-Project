@@ -6,7 +6,7 @@ const EditAllTurfModal = ({ edit, refetch, setEdit }) => {
   console.log(edit);
   const [info, setInfo] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/turfCollection/${edit}`)
+    fetch(`https://turf-server-seven.vercel.app/turfCollection/${edit}`)
       .then((res) => res.json())
       .then((data) => {
         console.log("all t e", data);
@@ -27,7 +27,7 @@ const EditAllTurfModal = ({ edit, refetch, setEdit }) => {
       promo: promo,
     };
 
-    fetch(`http://localhost:5000/turfCollection/${edit}`, {
+    fetch(`https://turf-server-seven.vercel.app/turfCollection/${edit}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

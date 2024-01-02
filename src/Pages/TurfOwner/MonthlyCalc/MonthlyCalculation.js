@@ -41,7 +41,7 @@ const MonthlyCalculation = () => {
     queryKey: ["bookings"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/bookedData?name=${crntUserName}`
+        `https://turf-server-seven.vercel.app/bookedData?name=${crntUserName}`
       );
       const data = await res.json();
       return data;
@@ -77,7 +77,7 @@ const MonthlyCalculation = () => {
     );
     if (proceed) {
       console.log("dltId", id);
-      fetch(`http://localhost:5000/booking/${id}`, {
+      fetch(`https://turf-server-seven.vercel.app/booking/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -97,7 +97,7 @@ const MonthlyCalculation = () => {
       `Are you sure game ${name}, slot: ${slot} is finished?`
     );
     if (proceed) {
-      fetch(`http://localhost:5000/booking/${id}`, {
+      fetch(`https://turf-server-seven.vercel.app/booking/${id}`, {
         method: "PATCH",
       })
         .then((res) => res.json())

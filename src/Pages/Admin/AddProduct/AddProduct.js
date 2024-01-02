@@ -42,7 +42,7 @@ const AddProduct = () => {
             date: format(setDate, "PP"),
           };
           console.log(product);
-          fetch("http://localhost:5000/shop", {
+          fetch("https://turf-server-seven.vercel.app/shop", {
             method: "POST",
             headers: {
               "content-type": "application/json",

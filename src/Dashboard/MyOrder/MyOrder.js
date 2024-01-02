@@ -16,7 +16,7 @@ const MyOrder = () => {
   const crntUserMail = user.email;
   const [allOrders, setAllOrders] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/users?email=${user?.email}`)
+    fetch(`https://turf-server-seven.vercel.app/users?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -32,7 +32,7 @@ const MyOrder = () => {
     queryKey: ["user", crntUserMail],
     queryFn: async () => {
       let res = await fetch(
-        `http://localhost:5000/shopOrder?email=${crntUserMail}`
+        `https://turf-server-seven.vercel.app/shopOrder?email=${crntUserMail}`
       );
       let data = await res.json();
       return data;
@@ -52,7 +52,7 @@ const MyOrder = () => {
       `Are you sure you want to delete order of ${name}?`
     );
     if (proceed) {
-      fetch(`http://localhost:5000/shopOrder/${id}`, {
+      fetch(`https://turf-server-seven.vercel.app/shopOrder/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

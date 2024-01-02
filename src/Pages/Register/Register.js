@@ -101,7 +101,7 @@ const Register = () => {
         const number = "";
         const location = "";
         console.log(user);
-        fetch(`http://localhost:5000/users?email=${user.email}`)
+        fetch(`https://turf-server-seven.vercel.app/users?email=${user.email}`)
           .then((res) => res.json())
           .then((data) => {
             if (data.length) {
@@ -139,7 +139,7 @@ const Register = () => {
       email: email,
       msg: "We have sent you a varification link to your email.",
     };
-    fetch("http://localhost:5000/users", {
+    fetch("https://turf-server-seven.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -150,7 +150,7 @@ const Register = () => {
       .then((data) => {
         setUserEmail(email);
         toast.success("user registered successfully!!");
-        fetch("http://localhost:5000/notification", {
+        fetch("https://turf-server-seven.vercel.app/notification", {
           method: "POST",
           headers: {
             "content-type": "application/json",

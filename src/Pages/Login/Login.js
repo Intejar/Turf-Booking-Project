@@ -59,7 +59,7 @@ const Login = () => {
         setLogInUserEmail(data.email);
         navigate("/");
         // if (user.emailVerified) {
-        //   fetch(`http://localhost:5000/users?email=${user.email}`, {
+        //   fetch(`https://turf-server-seven.vercel.app/users?email=${user.email}`, {
         //     method: "PATCH",
         //   })
         //     .then((res) => res.json())
@@ -98,7 +98,7 @@ const Login = () => {
         const number = "";
         const location = "";
         console.log(user);
-        fetch(`http://localhost:5000/users?email=${user.email}`)
+        fetch(`https://turf-server-seven.vercel.app/users?email=${user.email}`)
           .then((res) => res.json())
           .then((data) => {
             if (data.length) {
@@ -107,11 +107,13 @@ const Login = () => {
               navigate("/");
             } else {
               const role = "buyer";
-              saveUser(user.displayName,
+              saveUser(
+                user.displayName,
                 user.email,
                 number,
                 location,
-                user.photoURL);
+                user.photoURL
+              );
               navigate("/");
             }
           });
@@ -132,7 +134,7 @@ const Login = () => {
       img: image,
       varify: "False",
     };
-    fetch("http://localhost:5000/users", {
+    fetch("https://turf-server-seven.vercel.app/users", {
       method: "POST",
       headers: {
         "content-type": "application/json",
